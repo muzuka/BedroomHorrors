@@ -3,13 +3,14 @@ using System.Collections;
 
 public class HurtByLight : MonoBehaviour {
 
-	// Use this for initialization
+	int health;
+
 	void Start () {
-	
+		health = 10;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-	
+		if(health <= 0)
+			Destroy(gameObject);
 	}
 }
