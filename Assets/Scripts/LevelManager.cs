@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 
 public class LevelManager : MonoBehaviour {
 
@@ -8,18 +7,22 @@ public class LevelManager : MonoBehaviour {
 
 	public bool completed { get; set; }
 
+	MenuManager menu;
+
 	void Start () 
 	{
 		level = 0;
 		subLevel = 0;
 		completed = true;
+		menu = GetComponent<MenuManager>();
 	}
 
 	void Update () 
 	{
-	
-		if(FindObjectsOfType<Boogeyman>().Length == 0)
-			completed = true;
+		completed = FindObjectsOfType<Boogeyman>().Length == 0;
+
+		if(Input.GetKeyUp(KeyCode.Escape))
+			Application.Quit();
 
 		if(subLevel > 3)
 		{
@@ -30,21 +33,23 @@ public class LevelManager : MonoBehaviour {
 
 	public void loseGame ()
 	{
+		Debug.Assert(menu);
+		Debug.Log("Moving menu.");
 		level = 0;
 		subLevel = 0;
-		GetComponent<MenuManager>().gameOver.SetActive(true);
+		menu.setMenuInside(menu.gameOver);
 	}
 
 	public void startGame ()
 	{
+		Debug.Assert(menu);
 		level = 1;
 		subLevel = 1;
-		GetComponent<MenuManager>().mainMenu.SetActive(false);
+		menu.setMenuOutside(menu.mainMenu);
 	}
 
 	public void quitGame ()
 	{
 		Application.Quit();
-		EditorApplication.isPlaying = false;
 	}
 }
