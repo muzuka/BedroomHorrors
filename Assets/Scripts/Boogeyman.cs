@@ -38,7 +38,7 @@ public class Boogeyman : MonoBehaviour {
 			// check distance
 			// if in killzone player loses
 			if(Vector3.Distance(gameObject.transform.position, destination) <= 1.0f)
-				Destroy(gameObject);
+				Debug.Log("Lose!");
 		}
 
 		if(flying)
