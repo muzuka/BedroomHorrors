@@ -24,7 +24,6 @@ public class FlashlightController : MonoBehaviour {
 	void Update () 
 	{
 		mousePos = Input.mousePosition;
-		Debug.Log(mousePos);
 
 		offsetX = (int)mousePos.x - screenMidWidth;
 		offsetY = (int)mousePos.y - screenMidHeight;
