@@ -8,23 +8,20 @@ public class FlashlightController : MonoBehaviour {
 
 	int offsetX;
 	int offsetY;
-	int clampX;
-	int clampY;
+	const int clampX = 50;
+	const int clampY = 30;
+	const int clampYDown = -10;
 
-	void Awake ()
+	void Start ()
 	{
 		mousePos = new Vector3();
 		screenMidWidth = Screen.width/2;
 		screenMidHeight = Screen.height/2;
-
-		clampX = 50;
-		clampY = 30;
 	}
 
 	void Update () 
 	{
 		mousePos = Input.mousePosition;
-		Debug.Log(mousePos);
 
 		offsetX = (int)mousePos.x - screenMidWidth;
 		offsetY = (int)mousePos.y - screenMidHeight;
@@ -42,9 +39,9 @@ public class FlashlightController : MonoBehaviour {
 		{
 			offsetY = clampY;
 		}
-		else if(offsetY < -clampY)
+		else if(offsetY < clampYDown)
 		{
-			offsetY = -clampY;
+			offsetY = clampYDown;
 		}
 
 		gameObject.transform.rotation = Quaternion.Euler(-offsetY, 90+offsetX, 0.0f);
