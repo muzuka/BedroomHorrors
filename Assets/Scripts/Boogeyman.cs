@@ -2,8 +2,8 @@
 
 public class Boogeyman : MonoBehaviour {
 
-	public AudioClip moanClip;
-	public AudioClip screamClip;
+	AudioSource moanSource;
+	AudioSource screamSource;
 
 	const float minX = -3.0f;
 	const float maxX = 0.8f;
@@ -29,7 +29,9 @@ public class Boogeyman : MonoBehaviour {
 
 		destination = Vector3.zero;
 
-		AudioSource.PlayClipAtPoint(moanClip, transform.position);
+		moanSource = GetComponents<AudioSource>()[0];
+		screamSource = GetComponents<AudioSource>()[1];
+		moanSource.PlayOneShot(moanSource.clip);
 	}
 
 	void Update () 
@@ -40,7 +42,11 @@ public class Boogeyman : MonoBehaviour {
 			GetComponent<Mover>().speed = 10;
 
 			if(Vector3.Distance(gameObject.transform.position, destination) <= 1.0f)
+			{
+				screamSource.PlayOneShot(screamSource.clip);
 				Destroy(gameObject);
+			}
+				
 		}
 
 		if(flying)
@@ -59,11 +65,6 @@ public class Boogeyman : MonoBehaviour {
 			if(Vector3.Distance(gameObject.transform.position, destination) <= 1.0f)
 				destination = getRandomDestination();
 		}
-	}
-
-	void OnDestroy () 
-	{
-		AudioSource.PlayClipAtPoint(screamClip, transform.position);
 	}
 
 	Vector3 getRandomDestination () 
