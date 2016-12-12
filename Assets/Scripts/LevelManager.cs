@@ -7,14 +7,14 @@ public class LevelManager : MonoBehaviour {
 
 	public bool completed { get; set; }
 
-	MenuManager menu;
+	public MenuManager menu;
 
 	void Start () 
 	{
 		level = 0;
 		subLevel = 0;
 		completed = true;
-		menu = GetComponent<MenuManager>();
+		Debug.Assert(menu);
 	}
 
 	void Update () 
@@ -24,8 +24,15 @@ public class LevelManager : MonoBehaviour {
 		if(Input.GetKeyUp(KeyCode.Escape))
 			Application.Quit();
 
+		if(level == 5 && subLevel == 4 && completed)
+		{
+			Debug.Log("You won!");
+			menu.setYouWinInside();
+		}
+
 		if(subLevel > 3)
 		{
+			Debug.Log("Next Level!");
 			level++;
 			subLevel = 1;
 		}
@@ -37,7 +44,7 @@ public class LevelManager : MonoBehaviour {
 		Debug.Log("Moving menu.");
 		level = 0;
 		subLevel = 0;
-		menu.setMenuInside(menu.gameOver);
+		menu.setGameOverInside();
 	}
 
 	public void startGame ()
@@ -45,7 +52,9 @@ public class LevelManager : MonoBehaviour {
 		Debug.Assert(menu);
 		level = 1;
 		subLevel = 1;
-		menu.setMenuOutside(menu.mainMenu);
+		menu.setMainMenuOutside();
+		menu.setYouWinOutside();
+		menu.setGameOverOutside();
 	}
 
 	public void quitGame ()

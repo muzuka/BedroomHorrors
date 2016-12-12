@@ -31,9 +31,4 @@ public class HurtByLight : MonoBehaviour {
 		Debug.Log("Reached " + health + " health.");
 		health = maxHealth;
 	}
-
-	public void hit ()
-	{
-		Destroy(gameObject);
-	}
 }
