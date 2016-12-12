@@ -22,7 +22,7 @@ public class Boogeyman : MonoBehaviour {
 		flying = true;
 		attack = false;
 
-		timeToAttack = 10.0f;
+		timeToAttack = 5.0f;
 		timeConsumed = 0.0f;
 
 		destination = Vector3.zero;
@@ -33,6 +33,7 @@ public class Boogeyman : MonoBehaviour {
 		if(attack)
 		{
 			destination = FindObjectOfType<Camera>().transform.position;
+			GetComponent<Mover>().speed = 10;
 			// TODO
 			// check distance
 			// if in killzone player loses

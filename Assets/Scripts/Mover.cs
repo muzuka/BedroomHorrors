@@ -14,7 +14,7 @@ public class Mover : MonoBehaviour {
 
 	void Start () 
 	{
-		rotateStep = 0.1f;
+		rotateStep = 0.05f;
 		destination = Vector3.zero;
 		velocity = Vector3.Normalize(velocity) * speed;
 		directionToDestination = destination - gameObject.transform.position;
