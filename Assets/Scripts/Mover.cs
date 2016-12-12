@@ -6,7 +6,7 @@ public class Mover : MonoBehaviour {
 	public float speed;
 
 	float step;
-	float rotateStep;
+	const float rotateStep = 0.5f;
 
 	Vector3 directionToDestination;
 	Vector3 destination;
@@ -14,7 +14,6 @@ public class Mover : MonoBehaviour {
 
 	void Start () 
 	{
-		rotateStep = 0.5f;
 		destination = Vector3.zero;
 		velocity = Vector3.Normalize(velocity) * speed;
 		directionToDestination = destination - transform.position;
@@ -25,9 +24,9 @@ public class Mover : MonoBehaviour {
 	{
 		destination = GetComponent<Boogeyman>().destination;
 		directionToDestination = destination - transform.position;
+		rotationToDestination = Quaternion.FromToRotation(velocity, directionToDestination);
 
 		transform.rotation = Quaternion.Lerp(transform.rotation, rotationToDestination, rotateStep);
-		velocity = transform.rotation.eulerAngles;
 		moveBoogeyman();
 	}
 
