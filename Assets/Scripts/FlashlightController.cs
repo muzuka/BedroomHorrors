@@ -1,16 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 public class FlashlightController : MonoBehaviour {
-
-	public UnityEvent deathEvent; 
 
 	Vector3 mousePos;
 	int screenMidWidth;
 	int screenMidHeight;
-
-	const float timeToKill = 0.1f;
-	float timeConsumed;
 
 	int offsetX;
 	int offsetY;
@@ -23,7 +17,6 @@ public class FlashlightController : MonoBehaviour {
 		mousePos = new Vector3();
 		screenMidWidth = Screen.width/2;
 		screenMidHeight = Screen.height/2;
-		timeConsumed = 0.0f;
 	}
 
 	void Update () 
@@ -54,22 +47,5 @@ public class FlashlightController : MonoBehaviour {
 		}
 
 		gameObject.transform.rotation = Quaternion.Euler(-offsetY, 90+offsetX, 0.0f);
-	}
-
-	void shootRay ()
-	{
-		if(Raycaster.shootMouseRay().transform != null)
-		{
-			Debug.Log("Hit boogeyman.");
-			timeConsumed += Time.deltaTime;
-			if(timeConsumed >= timeToKill)
-			{
-				deathEvent.Invoke();
-			}
-		}
-		else
-		{
-			timeConsumed = 0.0f;
-		}
 	}
 }
