@@ -14,20 +14,20 @@ public class Mover : MonoBehaviour {
 
 	void Start () 
 	{
-		rotateStep = 0.05f;
+		rotateStep = 0.5f;
 		destination = Vector3.zero;
 		velocity = Vector3.Normalize(velocity) * speed;
-		directionToDestination = destination - gameObject.transform.position;
+		directionToDestination = destination - transform.position;
 		rotationToDestination = Quaternion.FromToRotation(velocity, directionToDestination);
 	}
 
 	void Update () 
 	{
 		destination = GetComponent<Boogeyman>().destination;
-		directionToDestination = destination - gameObject.transform.position;
+		directionToDestination = destination - transform.position;
 
-		gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, rotationToDestination, rotateStep);
-
+		transform.rotation = Quaternion.Lerp(transform.rotation, rotationToDestination, rotateStep);
+		velocity = transform.rotation.eulerAngles;
 		moveBoogeyman();
 	}
 
@@ -35,6 +35,6 @@ public class Mover : MonoBehaviour {
 	{
 		velocity = Vector3.Normalize(velocity) * speed;
 		step = speed * Time.deltaTime;
-		gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, destination, step);
+		transform.position = Vector3.Lerp(transform.position, destination, step);
 	}
 }
