@@ -2,6 +2,9 @@
 
 public class Boogeyman : MonoBehaviour {
 
+	public AudioClip moanClip;
+	public AudioClip screamClip;
+
 	const float minX = -3.0f;
 	const float maxX = 0.8f;
 	const float minZ = -3.5f;
@@ -25,6 +28,8 @@ public class Boogeyman : MonoBehaviour {
 		timeConsumed = 0.0f;
 
 		destination = Vector3.zero;
+
+		AudioSource.PlayClipAtPoint(moanClip, transform.position);
 	}
 
 	void Update () 
@@ -54,6 +59,11 @@ public class Boogeyman : MonoBehaviour {
 			if(Vector3.Distance(gameObject.transform.position, destination) <= 1.0f)
 				destination = getRandomDestination();
 		}
+	}
+
+	void OnDestroy () 
+	{
+		AudioSource.PlayClipAtPoint(screamClip, transform.position);
 	}
 
 	Vector3 getRandomDestination () 
