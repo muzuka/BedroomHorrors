@@ -7,14 +7,16 @@ public class BoogeymanManager : MonoBehaviour {
 	Vector3 leftOrigin;
 	Vector3 closetOrigin;
 
-	void Start () {
+	void Start () 
+	{
 		frontOrigin = new Vector3(-2.5f, -0.3f, -2.15f);
 		rightOrigin = new Vector3(-3.0f, -0.3f, -2.75f);
 		leftOrigin = new Vector3(-3.0f, -0.3f, -1.75f);
 		closetOrigin = new Vector3(1.0f, 0.25f, -2.0f);
 	}
 
-	void Update () {
+	void Update () 
+	{
 
 		if(GetComponent<LevelManager>().completed)
 		{
@@ -37,7 +39,7 @@ public class BoogeymanManager : MonoBehaviour {
 		}
 	}
 
-	void levelOneActivate()
+	void levelOneActivate ()
 	{
 		switch(GetComponent<LevelManager>().subLevel)
 		{
@@ -56,7 +58,7 @@ public class BoogeymanManager : MonoBehaviour {
 		}
 	}
 
-	void levelTwoActivate()
+	void levelTwoActivate ()
 	{
 		switch(GetComponent<LevelManager>().subLevel)
 		{
@@ -77,7 +79,7 @@ public class BoogeymanManager : MonoBehaviour {
 		}
 	}
 
-	void levelThreeActivate()
+	void levelThreeActivate ()
 	{
 		switch(GetComponent<LevelManager>().subLevel)
 		{
@@ -101,7 +103,7 @@ public class BoogeymanManager : MonoBehaviour {
 		}
 	}
 
-	void spawnBoogeyman(Vector3 origin)
+	void spawnBoogeyman (Vector3 origin)
 	{
 		Instantiate(Resources.Load("Prefabs/Boogeyman_Weak"), origin, Quaternion.identity);
 	}

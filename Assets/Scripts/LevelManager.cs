@@ -7,13 +7,15 @@ public class LevelManager : MonoBehaviour {
 
 	public bool completed { get; set; }
 
-	void Start () {
+	void Start () 
+	{
 		level = 1;
 		subLevel = 1;
 		completed = true;
 	}
 
-	void Update () {
+	void Update () 
+	{
 	
 		if(FindObjectsOfType<Boogeyman>().Length == 0)
 			completed = true;
