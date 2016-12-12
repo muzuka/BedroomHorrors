@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 
 public class LevelManager : MonoBehaviour {
 
@@ -9,8 +10,8 @@ public class LevelManager : MonoBehaviour {
 
 	void Start () 
 	{
-		level = 1;
-		subLevel = 1;
+		level = 0;
+		subLevel = 0;
 		completed = true;
 	}
 
@@ -25,5 +26,25 @@ public class LevelManager : MonoBehaviour {
 			level++;
 			subLevel = 1;
 		}
+	}
+
+	public void loseGame ()
+	{
+		level = 0;
+		subLevel = 0;
+		GetComponent<MenuManager>().gameOver.SetActive(true);
+	}
+
+	public void startGame ()
+	{
+		level = 1;
+		subLevel = 1;
+		GetComponent<MenuManager>().mainMenu.SetActive(false);
+	}
+
+	public void quitGame ()
+	{
+		Application.Quit();
+		EditorApplication.isPlaying = false;
 	}
 }

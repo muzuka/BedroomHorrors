@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class Boogeyman : MonoBehaviour {
+
+	public UnityEvent loseEvent;
 
 	AudioSource moanSource;
 	AudioSource screamSource;
@@ -43,6 +46,7 @@ public class Boogeyman : MonoBehaviour {
 
 			if(Vector3.Distance(gameObject.transform.position, destination) <= 1.0f)
 			{
+				loseEvent.Invoke();
 				screamSource.PlayOneShot(screamSource.clip);
 				Destroy(gameObject);
 			}

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Events;
 
 public class MenuManager : MonoBehaviour {
 
@@ -8,12 +8,12 @@ public class MenuManager : MonoBehaviour {
 
 	void Start () 
 	{
-	
+		mainMenu.SetActive(true);
+		gameOver.SetActive(false);
 	}
-	
 
-	void Update () 
+	public void loseGame ()
 	{
-	
+		gameOver.SetActive(true);
 	}
 }
