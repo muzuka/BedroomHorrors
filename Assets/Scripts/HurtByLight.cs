@@ -2,30 +2,38 @@
 
 public class HurtByLight : MonoBehaviour {
 
-	int maxHealth;
+	const int maxHealth = 25;
 	int health;
 
 	void Start () 
 	{
-		maxHealth = 10;
 		health = maxHealth;
 	}
 
 	void Update () 
 	{
 		if(health <= 0)
+		{
+			AudioSource.PlayClipAtPoint(GetComponent<Boogeyman>().screamClip, transform.position, 2.0f);
 			Destroy(gameObject);
+		}
 	}
 
 	void OnTriggerStay ()
 	{
-		Debug.Log("Light is on boogeyman.");
+		GetComponent<ParticleSystem>().Play();
 		health--;
 	}
 
 	void OnTriggerExit ()
 	{
 		Debug.Log("Light has left the boogeyman.");
+		Debug.Log("Reached " + health + " health.");
 		health = maxHealth;
+	}
+
+	public void hit ()
+	{
+		Destroy(gameObject);
 	}
 }
