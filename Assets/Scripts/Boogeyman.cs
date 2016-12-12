@@ -5,8 +5,8 @@ public class Boogeyman : MonoBehaviour {
 
 	public UnityEvent loseEvent;
 
-	AudioSource moanSource;
-	AudioSource screamSource;
+	public AudioClip screamClip;
+	const float volume = 0.5f;
 
 	const float minX = -3.0f;
 	const float maxX = 0.8f;
@@ -31,10 +31,6 @@ public class Boogeyman : MonoBehaviour {
 		timeConsumed = 0.0f;
 
 		destination = Vector3.zero;
-
-		moanSource = GetComponents<AudioSource>()[0];
-		screamSource = GetComponents<AudioSource>()[1];
-		moanSource.PlayOneShot(moanSource.clip);
 	}
 
 	void Update () 
@@ -44,10 +40,11 @@ public class Boogeyman : MonoBehaviour {
 			destination = FindObjectOfType<Camera>().transform.position;
 			GetComponent<Mover>().speed = 10;
 
-			if(Vector3.Distance(gameObject.transform.position, destination) <= 1.0f)
+			if(Vector3.Distance(gameObject.transform.position, destination) <= 0.5f)
 			{
+				Debug.Log("You Lost!");
 				loseEvent.Invoke();
-				screamSource.PlayOneShot(screamSource.clip);
+				AudioSource.PlayClipAtPoint(screamClip, transform.position, volume);
 				Destroy(gameObject);
 			}
 				
@@ -73,7 +70,6 @@ public class Boogeyman : MonoBehaviour {
 
 	Vector3 getRandomDestination () 
 	{
-
 		float randX = Random.Range(minX, maxX);
 		float randY = Random.Range(minY, maxY);
 		float randZ = Random.Range(minZ, maxZ);
