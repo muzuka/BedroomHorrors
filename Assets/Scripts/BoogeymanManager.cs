@@ -23,27 +23,27 @@ public class BoogeymanManager : MonoBehaviour {
 			switch(GetComponent<LevelManager>().level)
 			{
 			case 1:
-				Debug.Log("Level 1");
+				//Debug.Log("Level 1");
 				levelOneActivate();
 				GetComponent<LevelManager>().subLevel++;
 				break;
 			case 2:
-				Debug.Log("Level 2");
+				//Debug.Log("Level 2");
 				levelTwoActivate();
 				GetComponent<LevelManager>().subLevel++;
 				break;
 			case 3:
-				Debug.Log("Level 3");
+				//Debug.Log("Level 3");
 				levelThreeActivate();
 				GetComponent<LevelManager>().subLevel++;
 				break;
 			case 4:
-				Debug.Log("Level 4");
+				//Debug.Log("Level 4");
 				levelFourActivate(); 
 				GetComponent<LevelManager>().subLevel++;
 				break;
 			case 5:
-				Debug.Log("Level 5");
+				//Debug.Log("Level 5");
 				levelFiveActivate();
 				GetComponent<LevelManager>().subLevel++;
 				break;

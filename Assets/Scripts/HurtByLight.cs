@@ -27,8 +27,8 @@ public class HurtByLight : MonoBehaviour {
 
 	void OnTriggerExit ()
 	{
-		Debug.Log("Light has left the boogeyman.");
-		Debug.Log("Reached " + health + " health.");
+		//Debug.Log("Light has left the boogeyman.");
+		//Debug.Log("Reached " + health + " health.");
 		health = maxHealth;
 	}
 }

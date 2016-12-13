@@ -42,7 +42,7 @@ public class Boogeyman : MonoBehaviour {
 
 			if(Vector3.Distance(gameObject.transform.position, destination) <= 0.5f)
 			{
-				Debug.Log("You Lost!");
+				//Debug.Log("You Lost!");
 				loseEvent.Invoke();
 				AudioSource.PlayClipAtPoint(screamClip, transform.position, volume);
 				Destroy(gameObject);
