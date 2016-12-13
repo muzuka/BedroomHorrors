@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour {
 	public void startGame ()
 	{
 		//Debug.Assert(menu);
-		level = 5;
+		level = 1;
 		subLevel = 1;
 		menu.setMainMenuOutside();
 		menu.setYouWinOutside();
