@@ -3,8 +3,6 @@ using UnityEngine.Events;
 
 public class Boogeyman : MonoBehaviour {
 
-	public UnityEvent loseEvent;
-
 	public AudioClip screamClip;
 	const float volume = 0.5f;
 
@@ -43,7 +41,7 @@ public class Boogeyman : MonoBehaviour {
 			if(Vector3.Distance(gameObject.transform.position, destination) <= 0.5f)
 			{
 				//Debug.Log("You Lost!");
-				loseEvent.Invoke();
+				FindObjectOfType<LevelManager>().loseGame();
 				AudioSource.PlayClipAtPoint(screamClip, transform.position, volume);
 				Destroy(gameObject);
 			}
