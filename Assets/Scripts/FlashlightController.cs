@@ -11,6 +11,7 @@ public class FlashlightController : MonoBehaviour {
 	const int clampX = 50;
 	const int clampY = 30;
 	const int clampYDown = -10;
+	const int slowValue = 5;
 
 	void Start ()
 	{
@@ -27,6 +28,9 @@ public class FlashlightController : MonoBehaviour {
 
 		offsetX = (int)mousePos.x - screenMidWidth;
 		offsetY = (int)mousePos.y - screenMidHeight;
+
+		offsetX /= slowValue;
+		offsetY /= slowValue;
 
 		if(offsetX > clampX)
 		{
