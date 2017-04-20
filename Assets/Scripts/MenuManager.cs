@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 public class MenuManager : MonoBehaviour {
 
@@ -18,38 +17,26 @@ public class MenuManager : MonoBehaviour {
 
 	public void setGameOverInside ()
 	{
-		//Debug.Log("Game over has been placed inside.");
-		RectTransform menuTransform = gameOver.GetComponent<RectTransform>();
-		menuTransform.anchoredPosition = new Vector2(menuTransform.anchoredPosition.x, inside);
-		//Debug.Log("Game Over is at " + menuTransform.anchoredPosition);
+		gameOver.SetActive(true);
 	}
 
 	public void setGameOverOutside ()
 	{
-		//Debug.Log("Game over has been placed outside.");
-		RectTransform menuTransform = gameOver.GetComponent<RectTransform>();
-		menuTransform.anchoredPosition = new Vector2(menuTransform.anchoredPosition.x, outside);
+		gameOver.SetActive(false);
 	}
 
 	public void setMainMenuOutside ()
 	{
-		//Debug.Log("Main menu has been placed outside.");
-		RectTransform menuTransform = mainMenu.GetComponent<RectTransform>();
-		menuTransform.anchoredPosition = new Vector2(menuTransform.anchoredPosition.x, outside);
+		mainMenu.SetActive(false);
 	}
 
 	public void setYouWinInside ()
 	{
-		//Debug.Log("Game over has been placed inside.");
-		RectTransform menuTransform = youWin.GetComponent<RectTransform>();
-		menuTransform.anchoredPosition = new Vector2(menuTransform.anchoredPosition.x, inside);
-		//Debug.Log("Game Over is at " + menuTransform.anchoredPosition);
+		youWin.SetActive(true);
 	}
 
 	public void setYouWinOutside ()
 	{
-		//Debug.Log("Game over has been placed outside.");
-		RectTransform menuTransform = youWin.GetComponent<RectTransform>();
-		menuTransform.anchoredPosition = new Vector2(menuTransform.anchoredPosition.x, outside);
+		youWin.SetActive(false);
 	}
 }
