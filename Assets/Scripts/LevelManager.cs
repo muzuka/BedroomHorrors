@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour {
 		if(level == 6 && completed)
 		{
 			//Debug.Log("You won!");
-			menu.setYouWinInside();
+			menu.setYouWin(true);
 		}
 
 		if(subLevel > 3)
@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour {
 		//Debug.Log("Moving menu.");
 		level = 0;
 		subLevel = 0;
-		menu.setGameOverInside();
+		menu.setGameOver(true);
 	}
 
 	public void startGame ()
@@ -52,9 +52,9 @@ public class LevelManager : MonoBehaviour {
 		//Debug.Assert(menu);
 		level = 1;
 		subLevel = 1;
-		menu.setMainMenuOutside();
-		menu.setYouWinOutside();
-		menu.setGameOverOutside();
+		menu.setMainMenu(false);
+		menu.setYouWin(false);
+		menu.setGameOver(false);
 	}
 
 	public void quitGame ()

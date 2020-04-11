@@ -11,32 +11,22 @@ public class MenuManager : MonoBehaviour {
 
 	void Start () 
 	{
-		setGameOverOutside();
-		setYouWinOutside();
+		setGameOver(false);
+		setYouWin(false);
 	}
 
-	public void setGameOverInside ()
-	{
-		gameOver.SetActive(true);
-	}
+    public void setGameOver(bool value)
+    {
+        gameOver.SetActive(value);
+    }
 
-	public void setGameOverOutside ()
-	{
-		gameOver.SetActive(false);
-	}
-
-	public void setMainMenuOutside ()
+	public void setMainMenu(bool value)
 	{
 		mainMenu.SetActive(false);
 	}
 
-	public void setYouWinInside ()
-	{
-		youWin.SetActive(true);
-	}
-
-	public void setYouWinOutside ()
-	{
-		youWin.SetActive(false);
-	}
+    public void setYouWin(bool value)
+    {
+        youWin.SetActive(value);
+    }
 }

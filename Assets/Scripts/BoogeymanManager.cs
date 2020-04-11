@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 
-public class BoogeymanManager : MonoBehaviour {
+public class BoogeymanManager : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject _boogeyman;
+
+    [SerializeField]
+    private LevelManager _levelManager;
 
 	Vector3 frontOrigin;
 	Vector3 rightOrigin;
@@ -17,35 +23,35 @@ public class BoogeymanManager : MonoBehaviour {
 
 	void Update () 
 	{
-		if(GetComponent<LevelManager>().completed)
+		if(_levelManager.completed)
 		{
-			GetComponent<LevelManager>().completed = false;
-			switch(GetComponent<LevelManager>().level)
+			_levelManager.completed = false;
+			switch(_levelManager.level)
 			{
 			case 1:
 				//Debug.Log("Level 1");
 				levelOneActivate();
-				GetComponent<LevelManager>().subLevel++;
+				_levelManager.subLevel++;
 				break;
 			case 2:
 				//Debug.Log("Level 2");
 				levelTwoActivate();
-				GetComponent<LevelManager>().subLevel++;
+				_levelManager.subLevel++;
 				break;
 			case 3:
 				//Debug.Log("Level 3");
 				levelThreeActivate();
-				GetComponent<LevelManager>().subLevel++;
+				_levelManager.subLevel++;
 				break;
 			case 4:
 				//Debug.Log("Level 4");
 				levelFourActivate(); 
-				GetComponent<LevelManager>().subLevel++;
+				_levelManager.subLevel++;
 				break;
 			case 5:
 				//Debug.Log("Level 5");
 				levelFiveActivate();
-				GetComponent<LevelManager>().subLevel++;
+				_levelManager.subLevel++;
 				break;
 			}
 		}
@@ -53,7 +59,7 @@ public class BoogeymanManager : MonoBehaviour {
 
 	void levelOneActivate ()
 	{
-		switch(GetComponent<LevelManager>().subLevel)
+		switch(_levelManager.subLevel)
 		{
 		case 1:
 			spawnBoogeyman(frontOrigin);
@@ -72,7 +78,7 @@ public class BoogeymanManager : MonoBehaviour {
 
 	void levelTwoActivate ()
 	{
-		switch(GetComponent<LevelManager>().subLevel)
+		switch(_levelManager.subLevel)
 		{
 		case 1:
 			spawnBoogeyman(leftOrigin);
@@ -93,7 +99,7 @@ public class BoogeymanManager : MonoBehaviour {
 
 	void levelThreeActivate ()
 	{
-		switch(GetComponent<LevelManager>().subLevel)
+		switch(_levelManager.subLevel)
 		{
 		case 1:
 			spawnBoogeyman(frontOrigin);
@@ -117,7 +123,7 @@ public class BoogeymanManager : MonoBehaviour {
 
 	void levelFourActivate ()
 	{
-		switch(GetComponent<LevelManager>().subLevel)
+		switch(_levelManager.subLevel)
 		{
 		case 1:
 			spawnBoogeyman(frontOrigin);
@@ -146,7 +152,7 @@ public class BoogeymanManager : MonoBehaviour {
 
 	void levelFiveActivate ()
 	{
-		switch(GetComponent<LevelManager>().subLevel)
+		switch(_levelManager.subLevel)
 		{
 		case 1:
 			spawnBoogeyman(frontOrigin);
@@ -185,7 +191,6 @@ public class BoogeymanManager : MonoBehaviour {
 
 	void spawnBoogeyman (Vector3 origin)
 	{
-		var tempBoogeyman = (GameObject)Resources.Load("Prefabs/Boogeyman_Weak");
-		Instantiate(tempBoogeyman, origin, tempBoogeyman.transform.rotation);
+		Instantiate(_boogeyman, origin, _boogeyman.transform.rotation);
 	}
 }
